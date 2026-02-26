@@ -188,6 +188,10 @@
             transition: var(--transition);
             background-color: white;
         }
+        .duration-input:nth-child(1) {
+            min-width: 60px;
+            flex: 0.8;
+        }
         .duration-input:focus {
             outline: none;
             border-color: var(--primary-color);
@@ -439,6 +443,10 @@
                 padding: 0.65rem 0.6rem;
                 font-size: 0.8rem;
             }
+            .duration-input:nth-child(1) {
+                min-width: 40px;
+                flex: 0.8;
+            }
             #copy-playback-btn {
                 grid-column: 2 / 3;
                 grid-row: 4 / 5;
@@ -529,6 +537,9 @@
                 font-size: 0.8rem;
                 min-width: 45px;
             }
+            .duration-input:nth-child(1) {
+                min-width: 35px;
+            }
             
             .duration-unit-text {
                 font-size: 0.75rem;
@@ -568,9 +579,9 @@
                 
                 <div class="duration-label">回放时长：</div>
                 <div class="duration-input-group">
-                    <input type="number" class="duration-input" id="duration-hours" placeholder="小时" value="0" min="0" max="6">
+                    <input type="number" class="duration-input" id="duration-hours" placeholder="小时" value="1" min="0" max="6">
                     <span class="duration-unit-text">小时</span>
-                    <input type="number" class="duration-input" id="duration-minutes" placeholder="分钟" value="40" min="0" max="59">
+                    <input type="number" class="duration-input" id="duration-minutes" placeholder="分钟" value="0" min="0" max="59">
                     <span class="duration-unit-text">分钟</span>
                     <input type="number" class="duration-input" id="duration-seconds" placeholder="秒" value="0" min="0" max="59">
                     <span class="duration-unit-text">秒</span>
@@ -604,78 +615,78 @@
 
     <script>
         const channelList = [
-            {name: "重庆卫视", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111013/1.m3u8"},
-            {name: "重庆新闻", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111014/1.m3u8"},
-            {name: "重庆影视剧", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111015/1.m3u8"},
-            {name: "重庆社会与法", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111016/1.m3u8"},
-            {name: "重庆红岩文化", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111017/1.m3u8"},
-            {name: "重庆文体娱乐", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111018/1.m3u8"},
-            {name: "重庆新农村", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111019/1.m3u8"},
-            {name: "重庆少儿", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111020/1.m3u8"},
-            {name: "重庆红叶", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111021/1.m3u8"},
-            {name: "重庆汽摩", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111022/1.m3u8"},
+            {name: "重庆卫视", "tvg-name":"重庆卫视", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111013/1.m3u8"},
+            {name: "重庆新闻", "tvg-name":"重庆新闻", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111014/1.m3u8"},
+            {name: "重庆影视剧", "tvg-name":"重庆影视剧", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111015/1.m3u8"},
+            {name: "重庆社会与法", "tvg-name":"重庆社会与法", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111016/1.m3u8"},
+            {name: "重庆红岩文化", "tvg-name":"重庆红岩文化", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111017/1.m3u8"},
+            {name: "重庆文体娱乐", "tvg-name":"重庆文体娱乐", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111018/1.m3u8"},
+            {name: "重庆新农村", "tvg-name":"重庆新农村", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111019/1.m3u8"},
+            {name: "重庆少儿", "tvg-name":"重庆少儿", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111020/1.m3u8"},
+            {name: "重庆红叶", "tvg-name":"重庆红叶", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111021/1.m3u8"},
+            {name: "重庆汽摩", "tvg-name":"重庆汽摩", group:"重庆", url: "http://39.134.3.65:6610/000000001777/400000000100111022/1.m3u8"},
             
-            {name: "CCTV-1", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111001/1.m3u8"},
-            {name: "CCTV-1(备用)", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111062/1.m3u8"},
-            {name: "CCTV-2", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111002/1.m3u8"},
-            {name: "CCTV-3", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111057/1.m3u8"},
-            {name: "CCTV-4", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111003/1.m3u8"},
-            {name: "CCTV-5", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111058/1.m3u8"},
-            {name: "CCTV-5+", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111061/1.m3u8"},
-            {name: "CCTV-6", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111059/1.m3u8"},
-            {name: "CCTV-7", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111004/1.m3u8"},
-            {name: "CCTV-8", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111060/1.m3u8"},
-            {name: "CCTV-9", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111005/1.m3u8"},
-            {name: "CCTV-10", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111006/1.m3u8"},
-            {name: "CCTV-11", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111007/1.m3u8"},
-            {name: "CCTV-12", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111008/1.m3u8"},
-            {name: "CCTV-13", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111009/1.m3u8"},
-            {name: "CCTV-14", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111010/1.m3u8"},
-            {name: "CCTV-15", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111011/1.m3u8"},
-            {name: "CCTV-17", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111012/1.m3u8"},
-            {name: "CGTN", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111070/1.m3u8"},
+            {name: "CCTV-1", "tvg-name":"CCTV-1", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111001/1.m3u8"},
+            {name: "CCTV-1(备用)", "tvg-name":"CCTV-1(备用)", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111062/1.m3u8"},
+            {name: "CCTV-2", "tvg-name":"CCTV-2", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111002/1.m3u8"},
+            {name: "CCTV-3", "tvg-name":"CCTV-3", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111057/1.m3u8"},
+            {name: "CCTV-4", "tvg-name":"CCTV-4", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111003/1.m3u8"},
+            {name: "CCTV-5", "tvg-name":"CCTV-5", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111058/1.m3u8"},
+            {name: "CCTV-5+", "tvg-name":"CCTV-5+", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111061/1.m3u8"},
+            {name: "CCTV-6", "tvg-name":"CCTV-6", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111059/1.m3u8"},
+            {name: "CCTV-7", "tvg-name":"CCTV-7", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111004/1.m3u8"},
+            {name: "CCTV-8", "tvg-name":"CCTV-8", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111060/1.m3u8"},
+            {name: "CCTV-9", "tvg-name":"CCTV-9", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111005/1.m3u8"},
+            {name: "CCTV-10", "tvg-name":"CCTV-10", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111006/1.m3u8"},
+            {name: "CCTV-11", "tvg-name":"CCTV-11", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111007/1.m3u8"},
+            {name: "CCTV-12", "tvg-name":"CCTV-12", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111008/1.m3u8"},
+            {name: "CCTV-13", "tvg-name":"CCTV-13", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111009/1.m3u8"},
+            {name: "CCTV-14", "tvg-name":"CCTV-14", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111010/1.m3u8"},
+            {name: "CCTV-15", "tvg-name":"CCTV-15", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111011/1.m3u8"},
+            {name: "CCTV-17", "tvg-name":"CCTV-17", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111012/1.m3u8"},
+            {name: "CGTN", "tvg-name":"CGTN", group:"央视", url: "http://39.134.3.65:6610/000000001777/400000000100111070/1.m3u8"},
             
-            {name: "江苏卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111026/1.m3u8"},
-            {name: "浙江卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111027/1.m3u8"},
-            {name: "东方卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111028/1.m3u8"},
-            {name: "深圳卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111029/1.m3u8"},
-            {name: "北京卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111030/1.m3u8"},
-            {name: "山东卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111031/1.m3u8"},
-            {name: "天津卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111032/1.m3u8"},
-            {name: "贵州卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111033/1.m3u8"},
-            {name: "四川卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111034/1.m3u8"},
-            {name: "云南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111035/1.m3u8"},
-            {name: "广西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111036/1.m3u8"},
-            {name: "黑龙江卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111037/1.m3u8"},
-            {name: "安徽卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111038/1.m3u8"},
-            {name: "山西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111039/1.m3u8"},
-            {name: "江西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111040/1.m3u8"},
-            {name: "湖北卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111041/1.m3u8"},
-            {name: "海南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111042/1.m3u8"},
-            {name: "陕西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111043/1.m3u8"},
-            {name: "东南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111044/1.m3u8"},
-            {name: "辽宁卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111045/1.m3u8"},
-            {name: "内蒙古卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111046/1.m3u8"},
-            {name: "湖南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111047/1.m3u8"},
-            {name: "广东卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111048/1.m3u8"},
-            {name: "河南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111049/1.m3u8"},
-            {name: "河北卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111050/1.m3u8"},
-            {name: "宁夏卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111051/1.m3u8"},
-            {name: "甘肃卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111052/1.m3u8"},
-            {name: "青海卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111053/1.m3u8"},
-            {name: "新疆卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111054/1.m3u8"},
-            {name: "西藏卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111055/1.m3u8"},
-            {name: "吉林卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111056/1.m3u8"},
-            {name: "CETV-1", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111064/1.m3u8"},
-            {name: "CETV-4", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111063/1.m3u8"},
-            {name: "山东教育卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111065/1.m3u8"},
-            {name: "卡酷少儿", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111066/1.m3u8"},
-            {name: "嘉佳卡通", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111072/1.m3u8"},
-            {name: "金鹰卡通", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111073/1.m3u8"},
+            {name: "江苏卫视", "tvg-name":"江苏卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111026/1.m3u8"},
+            {name: "浙江卫视", "tvg-name":"浙江卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111027/1.m3u8"},
+            {name: "东方卫视", "tvg-name":"东方卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111028/1.m3u8"},
+            {name: "深圳卫视", "tvg-name":"深圳卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111029/1.m3u8"},
+            {name: "北京卫视", "tvg-name":"北京卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111030/1.m3u8"},
+            {name: "山东卫视", "tvg-name":"山东卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111031/1.m3u8"},
+            {name: "天津卫视", "tvg-name":"天津卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111032/1.m3u8"},
+            {name: "贵州卫视", "tvg-name":"贵州卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111033/1.m3u8"},
+            {name: "四川卫视", "tvg-name":"四川卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111034/1.m3u8"},
+            {name: "云南卫视", "tvg-name":"云南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111035/1.m3u8"},
+            {name: "广西卫视", "tvg-name":"广西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111036/1.m3u8"},
+            {name: "黑龙江卫视", "tvg-name":"黑龙江卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111037/1.m3u8"},
+            {name: "安徽卫视", "tvg-name":"安徽卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111038/1.m3u8"},
+            {name: "山西卫视", "tvg-name":"山西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111039/1.m3u8"},
+            {name: "江西卫视", "tvg-name":"江西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111040/1.m3u8"},
+            {name: "湖北卫视", "tvg-name":"湖北卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111041/1.m3u8"},
+            {name: "海南卫视", "tvg-name":"海南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111042/1.m3u8"},
+            {name: "陕西卫视", "tvg-name":"陕西卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111043/1.m3u8"},
+            {name: "东南卫视", "tvg-name":"东南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111044/1.m3u8"},
+            {name: "辽宁卫视", "tvg-name":"辽宁卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111045/1.m3u8"},
+            {name: "内蒙古卫视", "tvg-name":"内蒙古卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111046/1.m3u8"},
+            {name: "湖南卫视", "tvg-name":"湖南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111047/1.m3u8"},
+            {name: "广东卫视", "tvg-name":"广东卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111048/1.m3u8"},
+            {name: "河南卫视", "tvg-name":"河南卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111049/1.m3u8"},
+            {name: "河北卫视", "tvg-name":"河北卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111050/1.m3u8"},
+            {name: "宁夏卫视", "tvg-name":"宁夏卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111051/1.m3u8"},
+            {name: "甘肃卫视", "tvg-name":"甘肃卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111052/1.m3u8"},
+            {name: "青海卫视", "tvg-name":"青海卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111053/1.m3u8"},
+            {name: "新疆卫视", "tvg-name":"新疆卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111054/1.m3u8"},
+            {name: "西藏卫视", "tvg-name":"西藏卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111055/1.m3u8"},
+            {name: "吉林卫视", "tvg-name":"吉林卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111056/1.m3u8"},
+            {name: "CETV-1", "tvg-name":"CETV-1", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111064/1.m3u8"},
+            {name: "CETV-4", "tvg-name":"CETV-4", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111063/1.m3u8"},
+            {name: "山东教育卫视", "tvg-name":"山东教育卫视", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111065/1.m3u8"},
+            {name: "卡酷少儿", "tvg-name":"卡酷少儿", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111066/1.m3u8"},
+            {name: "嘉佳卡通", "tvg-name":"嘉佳卡通", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111072/1.m3u8"},
+            {name: "金鹰卡通", "tvg-name":"金鹰卡通", group:"卫视", url: "http://39.134.3.65:6610/000000001777/400000000100111073/1.m3u8"},
             
-            {name: "CCTV高网", group:"IPTV", url: "http://39.134.3.65:6610/000000001777/400000000100111069/1.m3u8"},
-            {name: "精彩影视", group:"IPTV", url: "http://39.134.3.65:6610/000000001777/400000000100111067/1.m3u8"},
-            {name: "求索纪录", group:"IPTV", url: "http://39.134.3.65:6610/000000001777/400000000100111068/1.m3u8"}
+            {name: "CCTV高网", "tvg-name":"CCTV高网", group:"IPTV", url: "http://39.134.3.65:6610/000000001777/400000000100111069/1.m3u8"},
+            {name: "精彩影视", "tvg-name":"精彩影视", group:"IPTV", url: "http://39.134.3.65:6610/000000001777/400000000100111067/1.m3u8"},
+            {name: "求索纪录", "tvg-name":"求索纪录", group:"IPTV", url: "http://39.134.3.65:6610/000000001777/400000000100111068/1.m3u8"}
         ];
 
         let currentChannel = null;
@@ -756,27 +767,35 @@
 
         function initDateRangeLimit() {
             const today = new Date();
-            const eightDaysAgo = new Date(today.getTime() - 8 * 24 * 60 * 60 * 1000);
+            const eightDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
             
-            const maxDate = formatTimeForInput(today);
-            const minDate = formatTimeForInput(eightDaysAgo);
+            const maxDateStr = formatDateForInput(today);
+            const minDateStr = formatDateForInput(eightDaysAgo);
             
-            elements.startTimeInput.min = minDate.split('T')[0];
-            elements.endTimeInput.min = minDate.split('T')[0];
-            elements.startTimeInput.max = maxDate.split('T')[0];
-            elements.endTimeInput.max = maxDate.split('T')[0];
+            elements.startTimeInput.min = minDateStr;
+            elements.endTimeInput.min = minDateStr;
+            elements.startTimeInput.max = maxDateStr;
+            elements.endTimeInput.max = maxDateStr;
             
             elements.startTimeInput.addEventListener("blur", validateDateRange);
             elements.endTimeInput.addEventListener("blur", validateDateRange);
+        }
+
+        function formatDateForInput(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         }
 
         function validateDateRange(e) {
             const input = e.target;
             if (!input.value) return;
             
-            const inputDate = new Date(input.value);
+            const inputValue = input.value;
+            const inputDate = new Date(inputValue);
             const today = new Date();
-            const eightDaysAgo = new Date(today.getTime() - 8 * 24 * 60 * 60 * 1000);
+            const eightDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
             
             const inputDateOnly = new Date(inputDate.getFullYear(), inputDate.getMonth(), inputDate.getDate());
             const todayOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -784,24 +803,32 @@
             
             if (inputDateOnly < eightDaysAgoOnly) {
                 showToast("日期不能早于8天前！已自动调整到最早日期");
-                input.value = formatTimeForInput(eightDaysAgo);
+                const newDateTime = new Date(eightDaysAgo);
+                newDateTime.setHours(inputDate.getHours(), inputDate.getMinutes(), inputDate.getSeconds());
+                input.value = formatTimeForInput(newDateTime);
             } else if (inputDateOnly > todayOnly) {
                 showToast("日期不能晚于今天！已自动调整到今天");
-                input.value = formatTimeForInput(today);
+                const newDateTime = new Date(today);
+                newDateTime.setHours(inputDate.getHours(), inputDate.getMinutes(), inputDate.getSeconds());
+                input.value = formatTimeForInput(newDateTime);
             }
         }
 
         function setDefaultTime() {
             const now = new Date();
-            const before1 = new Date(now.getTime() - 1 * 60 * 60 * 1000);
-            const eightDaysAgo = new Date(now.getTime() - 8 * 24 * 60 * 60 * 1000);
+            const oneHourAgo = new Date(now.getTime() - 1 * 60 * 60 * 1000);
             
-            const defaultTime = before1 < eightDaysAgo ? eightDaysAgo : before1;
+            const eightDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const defaultStartTime = oneHourAgo < eightDaysAgo ? eightDaysAgo : oneHourAgo;
             
-            elements.startTimeInput.value = formatTimeForInput(defaultTime);
+            elements.startTimeInput.value = formatTimeForInput(defaultStartTime);
             
-            const defaultEndTime = new Date(defaultTime.getTime() + 40 * 60 * 1000);
+            const defaultEndTime = new Date(defaultStartTime.getTime() + 1 * 60 * 60 * 1000);
             elements.endTimeInput.value = formatTimeForInput(defaultEndTime);
+            
+            elements.durationHours.value = 1;
+            elements.durationMinutes.value = 0;
+            elements.durationSeconds.value = 0;
         }
 
         function getTotalDurationSeconds() {
@@ -857,8 +884,8 @@
             const totalSeconds = getTotalDurationSeconds();
             
             if (totalSeconds === 0) {
-                setDurationFromSeconds(40 * 60);
-                showToast("时长不能为0，已重置为40分钟");
+                setDurationFromSeconds(3600);
+                showToast("时长不能为0，已重置为1小时");
                 return;
             }
             
@@ -895,153 +922,112 @@
             
             if (endTime <= startTime) {
                 showToast("结束时间不能早于或等于开始时间！");
-                const newEndTime = new Date(startTime.getTime() + 40 * 60 * 1000);
+                const newEndTime = new Date(startTime.getTime() + 3600 * 1000);
                 elements.endTimeInput.value = formatTimeForInput(newEndTime);
-                setDurationFromSeconds(40 * 60);
-                return;
+                setDurationFromSeconds(3600);
+            } else {
+                const totalSeconds = Math.floor((endTime - startTime) / 1000);
+                setDurationFromSeconds(totalSeconds);
             }
+        }
+
+        function formatTimeForInput(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+        }
+
+        function showToast(message) {
+            const toast = elements.toast;
+            toast.textContent = message;
+            toast.style.display = "block";
             
-            let diffSeconds = Math.floor((endTime - startTime) / 1000);
-            
-            if (diffSeconds > MAX_DURATION_SECONDS) {
-                diffSeconds = MAX_DURATION_SECONDS;
-                const newEndTime = new Date(startTime.getTime() + MAX_DURATION_SECONDS * 1000);
-                elements.endTimeInput.value = formatTimeForInput(newEndTime);
-                showToast(`回放时长不能超过${MAX_DURATION_HOURS}小时！已自动调整结束时间`);
-            }
-            
-            setDurationFromSeconds(diffSeconds);
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 3000);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("复制成功！");
+            }).catch(err => {
+                showToast("复制失败，请手动复制");
+                console.error('Failed to copy: ', err);
+            });
         }
 
         function initCopyLiveBtn() {
             elements.copyLiveBtn.addEventListener("click", function() {
-                if (!currentChannel) return;
-                copyToClipboard(currentChannel.url);
-                showToast("直播链接复制成功！");
+                if (currentChannel && currentChannel.url) {
+                    copyToClipboard(currentChannel.url);
+                }
             });
         }
 
         function initPlaybackFunction() {
             elements.copyPlaybackBtn.addEventListener("click", function() {
-                if (!currentChannel) return;
+                if (!currentChannel || !currentChannel.url) return;
                 
                 const startTimeVal = elements.startTimeInput.value;
                 const endTimeVal = elements.endTimeInput.value;
-
+                
                 if (!startTimeVal || !endTimeVal) {
-                    showToast("请选择完整的开始和结束时间！");
+                    showToast("请选择开始和结束时间！");
                     return;
                 }
-
-                validateDateRange({target: elements.startTimeInput});
-                validateDateRange({target: elements.endTimeInput});
                 
                 const startTime = new Date(startTimeVal);
                 const endTime = new Date(endTimeVal);
-
-                const diffSeconds = Math.floor((endTime - startTime) / 1000);
-                if (diffSeconds > MAX_DURATION_SECONDS) {
-                    showToast(`回放时长不能超过${MAX_DURATION_HOURS}小时！请调整时间`);
-                    const newEndTime = new Date(startTime.getTime() + MAX_DURATION_SECONDS * 1000);
-                    elements.endTimeInput.value = formatTimeForInput(newEndTime);
-                    setDurationFromSeconds(MAX_DURATION_SECONDS);
-                    return;
-                }
-
+                
                 if (endTime <= startTime) {
-                    showToast("结束时间不能早于或等于开始时间！");
+                    showToast("结束时间必须晚于开始时间！");
                     return;
                 }
-
-                const playbackUrl = generatePlaybackUrl(currentChannel.url, startTime, endTime);
+                
+                const startTimeFormatted = formatTimeForPlaybackUrl(startTime);
+                const endTimeFormatted = formatTimeForPlaybackUrl(endTime);
+                
+                const playbackUrl = currentChannel.url
+                    .replace("000000001777", "000000002777")
+                    + `?starttime=${startTimeFormatted}&endtime=${endTimeFormatted}`;
+                
                 copyToClipboard(playbackUrl);
-                showToast("自定义回放链接复制成功！");
             });
         }
 
-        function generatePlaybackUrl(channelUrl, startTime, endTime) {
-            const playbackBaseUrl = channelUrl.replace("000000001777", "000000002777");
-            const startLinkTime = formatTimeForLink(startTime);
-            const endLinkTime = formatTimeForLink(endTime);
-            return `${playbackBaseUrl}?starttime=${startLinkTime}&endtime=${endLinkTime}`;
-        }
-
-        function copyToClipboard(text) {
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).catch(err => {
-                    fallbackCopyToClipboard(text);
-                });
-            } else {
-                fallbackCopyToClipboard(text);
-            }
-        }
-
-        function fallbackCopyToClipboard(text) {
-            const tempInput = document.createElement("input");
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-        }
-
-        function formatTimeForInput(date) {
+        function formatTimeForPlaybackUrl(date) {
             const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, "0");
-            const day = String(date.getDate()).padStart(2, "0");
-            const hour = String(date.getHours()).padStart(2, "0");
-            const minute = String(date.getMinutes()).padStart(2, "0");
-            return `${year}-${month}-${day}T${hour}:${minute}`;
-        }
-
-        function formatTimeForLink(date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, "0");
-            const day = String(date.getDate()).padStart(2, "0");
-            const hour = String(date.getHours()).padStart(2, "0");
-            const minute = String(date.getMinutes()).padStart(2, "0");
-            const second = String(date.getSeconds()).padStart(2, "0");
-            return `${year}${month}${day}T${hour}${minute}${second}.00Z`;
-        }
-
-        function showToast(message) {
-            elements.toast.textContent = message;
-            elements.toast.style.display = "block";
-            clearTimeout(window.toastTimer);
-            window.toastTimer = setTimeout(() => {
-                elements.toast.style.display = "none";
-            }, 2500);
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            return `${year}${month}${day}T${hours}${minutes}${seconds}.00Z`;
         }
 
         function initCopyrightYear() {
-            const currentYear = new Date().getFullYear();
-            elements.currentYear.textContent = currentYear;
+            const year = new Date().getFullYear();
+            elements.currentYear.textContent = year;
         }
 
         function initDisclaimerModal() {
             elements.disclaimerLink.addEventListener("click", function() {
                 elements.disclaimerModal.style.display = "flex";
-                document.body.style.overflow = "hidden";
             });
-
-            elements.modalCloseBtn.addEventListener("click", closeModal);
-
+            
+            elements.modalCloseBtn.addEventListener("click", function() {
+                elements.disclaimerModal.style.display = "none";
+            });
+            
             elements.disclaimerModal.addEventListener("click", function(e) {
                 if (e.target === elements.disclaimerModal) {
-                    closeModal();
+                    elements.disclaimerModal.style.display = "none";
                 }
             });
-
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && elements.disclaimerModal.style.display === "flex") {
-                    closeModal();
-                }
-            });
-        }
-
-        function closeModal() {
-            elements.disclaimerModal.style.display = "none";
-            document.body.style.overflow = "auto";
         }
     </script>
 </body>
