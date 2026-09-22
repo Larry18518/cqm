@@ -1,14 +1,15 @@
 <!--
 <p>
-	名　　称：	Chongqing Mobile 直播/回放链接生成工具
-	版　　本：	第3版
-	更新日期：	2026/05/02
+	名　　称：	Chongqing Mobile 直播/回放链接生成工具（IPV4）
+	版　　本：	第4版
+	更新日期：	2026/09/22
 	创　　作：	豆包（ByteDance）
 	更　　新：	Larry18518（SCS）
 	更新日志：	初   版（2026/02/16）：新规作成；
 			   第 1 版（2026/02/26）：优化显示逻辑；
 			   第 2 版（2026/04/04）：更新无水印频道源及凤凰卫视频道源，优化回放获取逻辑；
 			   第 3 版（2026/05/02）：更新顶栏按钮，更新查看当前频道节目单功能（感谢vip.erw.cc），优化桌面端/移动端显示逻辑（以上改动第2.1版同步进行）。
+			   第 4 版（2026/09/22）：更新查看当前频道节目单功能入口（依然感谢vip.erw.cc）。
 
 	本网页内代码版权归 Larry18518 所有，
 	严禁未经许可的复制、篡改等行为。
@@ -1226,7 +1227,7 @@
                     return;
                 }
 
-                const epgUrl = `https://vip.erw.cc/channel_epg.html?ch=${encodeURIComponent(currentChannel["tvg-name"])}&date=${selectedDate}`;
+                const epgUrl = `https://pic.erw.cc/epg/html/channel_epg.html?ch=${encodeURIComponent(currentChannel["tvg-name"])}&date=${selectedDate}`;
                 window.open(epgUrl, '_blank');
             });
         }
